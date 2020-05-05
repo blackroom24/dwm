@@ -49,6 +49,7 @@ static const Layout layouts[] = {
 };
 
 /* key definitions */
+#define LEADER Mod4Mask|Mod1Mask
 #define MODKEY Mod4Mask
 #define TAGKEYS(KEY,TAG) \
 	{ MODKEY,                       KEY,      view,           {.ui = 1 << TAG} }, \
@@ -64,16 +65,32 @@ static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() 
 static const char *dmenucmd[] = { "dmenu_run", NULL };
 static const char *termcmd[]  = { "alacritty", NULL };
 
+static const char *mutecmd[]  = { "mute", NULL };
+static const char *volupcmd[]  = { "volup", NULL };
+static const char *voldncmd[]  = { "voldown", NULL };
+
+static const char *filecmd[]  = { "pcmanfm", NULL };
+static const char *browsercmd[]  = { "chromium", NULL };
+
+#include<X11/XF86keysym.h>
 static Key keys[] = {
 	/* modifier                     key        function        argument */
 	{ MODKEY,                       XK_r,      spawn,          {.v = dmenucmd } },
 	{ MODKEY,                       XK_x,      spawn,          {.v = termcmd } },
-	{ MODKEY,                       XK_b,      togglebar,      {0} },
-	{ MODKEY|ShiftMask,             XK_j,      rotatestack,    {.i = +1 } },
+	{ MODKEY|ShiftMask,             XK_b,      togglebar,      {0} },
+
+    { LEADER,                       XK_e,      spawn,          {.v = filecmd } },
+	{ LEADER,                       XK_b,      spawn,          {.v = browsercmd } },
+
+	{ 0,                            XF86XK_AudioMute,             spawn,          {.v = mutecmd } },
+	{ 0,                            XF86XK_AudioLowerVolume,      spawn,          {.v = voldncmd } },
+	{ 0,                            XF86XK_AudioRaiseVolume,      spawn,          {.v = volupcmd } },
+
+
+    { MODKEY|ShiftMask,             XK_j,      rotatestack,    {.i = +1 } },
 	{ MODKEY|ShiftMask,             XK_k,      rotatestack,    {.i = -1 } },
 	{ MODKEY,                       XK_j,      focusstack,     {.i = +1 } },
 	{ MODKEY,                       XK_k,      focusstack,     {.i = -1 } },
-
     { MODKEY,                       XK_i,      incnmaster,     {.i = +1 } },
 	{ MODKEY,                       XK_d,      incnmaster,     {.i = -1 } },
 	{ MODKEY,                       XK_h,      setmfact,       {.f = -0.05} },
@@ -85,7 +102,7 @@ static Key keys[] = {
     { MODKEY,                       XK_t,      setlayout,      {.v = &layouts[0]} },
 	{ MODKEY,                       XK_f,      setlayout,      {.v = &layouts[1]} },
 	{ MODKEY,                       XK_m,      setlayout,      {.v = &layouts[2]} },
-	{ MODKEY|ControlMask,		XK_comma,  cyclelayout,    {.i = -1 } },
+	{ MODKEY|ControlMask,		    XK_comma,  cyclelayout,    {.i = -1 } },
 	{ MODKEY|ControlMask,           XK_period, cyclelayout,    {.i = +1 } },
 	{ MODKEY,                       XK_space,  setlayout,      {0} },
 	{ MODKEY|ShiftMask,             XK_space,  togglefloating, {0} },
