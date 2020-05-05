@@ -1,0 +1,6 @@
+tags
+dwm
+*.o
+*.rej
+*.diff
+*.orig
