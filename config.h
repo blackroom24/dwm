@@ -33,6 +33,8 @@ static const Rule rules[] = {
 	{ "Gimp",               NULL,       NULL,       0,            1,           -1 },
 	{ "Firefox",            NULL,       NULL,       1 << 8,       0,           -1 },
 	{ "Lxappearance",      "lxappearance",       NULL,       0,       1,           -1 },
+	{ "Viewnior",      NULL,       NULL,       0,       1,           -1 },
+	{ "Nitrogen",      NULL,       NULL,       0,       1,           -1 },
 	{ NULL,   NULL,       "^Android Emulator -",       0,       1,           -1 },
 	{ NULL,   NULL,       "Emulator",       0,       1,           -1 },
 };
