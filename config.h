@@ -29,14 +29,14 @@ static const Rule rules[] = {
 	 *	WM_CLASS(STRING) = instance, class
 	 *	WM_NAME(STRING) = title
 	 */
-	/* class                instance    title       tags mask     isfloating   monitor */
-	{ "Gimp",               NULL,       NULL,       0,            1,           -1 },
-	{ "Firefox",            NULL,       NULL,       1 << 8,       0,           -1 },
-	{ "Lxappearance",      "lxappearance",       NULL,       0,       1,           -1 },
-	{ "Viewnior",      NULL,       NULL,       0,       1,           -1 },
-	{ "Nitrogen",      NULL,       NULL,       0,       1,           -1 },
-	{ NULL,   NULL,       "^Android Emulator -",       0,       1,           -1 },
-	{ NULL,   NULL,       "Emulator",       0,       1,           -1 },
+	/* class             instance          title        tags mask  iscentered  isfloating   monitor */
+	{ "Gimp",            NULL,             NULL,            0,         0,        1,         -1 },
+	{ "Firefox",         NULL,             NULL,         1 << 8,       0,        0,         -1 },
+	{ "Lxappearance",    "lxappearance",   NULL,            0,         1,        1,         -1 },
+	{ "Viewnior",        NULL,             NULL,            0,         1,        1,         -1 },
+	{ "Nitrogen",        NULL,             NULL,            0,         1,        1,         -1 },
+	{ NULL,              NULL,    "^Android Emulator -",    0,         1,        1,         -1 },
+	{ NULL,              NULL,             "Emulator",      0,         1,        1,         -1 },
 };
 
 /* layout(s) */
