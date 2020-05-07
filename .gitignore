@@ -4,3 +4,4 @@ dwm
 *.rej
 *.diff
 *.orig
+*.gz
